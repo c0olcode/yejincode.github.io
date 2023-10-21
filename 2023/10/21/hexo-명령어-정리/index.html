@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="hexo 명령어 정리 마크다운 JAVA보기 월요일에  시험이 있었대요;      Plus Minus Interest    블로그를 만들었다. 손이 많이 간다. 노션이랑 비슷하다.      Plus Minus Interest    블로그를 만들었다. 손이 많이 간다. 노션이랑 비슷하다.   Left Center Right   이건 뭘까? 1System.out">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo 명령어 정리">
+<meta property="og:url" content="https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/index.html">
+<meta property="og:site_name" content="나 JAVA 봐라">
+<meta property="og:description" content="hexo 명령어 정리 마크다운 JAVA보기 월요일에  시험이 있었대요;      Plus Minus Interest    블로그를 만들었다. 손이 많이 간다. 노션이랑 비슷하다.      Plus Minus Interest    블로그를 만들었다. 손이 많이 간다. 노션이랑 비슷하다.   Left Center Right   이건 뭘까? 1System.out">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/yejincode/yejincode/assets/69861207/f7a280bd-c6a6-4123-b137-c3c05417ce3d">
+<meta property="article:published_time" content="2023-10-21T14:25:52.000Z">
+<meta property="article:modified_time" content="2023-10-21T15:20:26.688Z">
+<meta property="article:author" content="yejin song">
+<meta property="article:tag" content="markdown">
+<meta property="article:tag" content="kernel360">
+<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="깃블로그">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yejincode/yejincode/assets/69861207/f7a280bd-c6a6-4123-b137-c3c05417ce3d">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>hexo 명령어 정리</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&text=hexo 명령어 정리"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&is_video=false&description=hexo 명령어 정리"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=hexo 명령어 정리&body=Check out this article: https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&name=hexo 명령어 정리&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&t=hexo 명령어 정리"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC"><span class="toc-number">1.</span> <span class="toc-text">hexo 명령어 정리</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4-JAVA%EB%B3%B4%EA%B8%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text">마크다운 JAVA보기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo%EB%A1%9C-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0"><span class="toc-number">1.0.2.</span> <span class="toc-text">hexo로 포스트 작성하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%9E%91%EC%84%B1%ED%95%9C-%EA%B8%80-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0"><span class="toc-number">1.0.3.</span> <span class="toc-text">작성한 글 삭제하기</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        hexo 명령어 정리
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">yejin song</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-21T14:25:52.000Z" class="dt-published" itemprop="datePublished">2023-10-21</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/etc/">etc</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/hexo/" rel="tag">hexo</a>, <a class="p-category" href="/tags/kernel360/" rel="tag">kernel360</a>, <a class="p-category" href="/tags/markdown/" rel="tag">markdown</a>, <a class="p-category" href="/tags/%EA%B9%83%EB%B8%94%EB%A1%9C%EA%B7%B8/" rel="tag">깃블로그</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="hexo-명령어-정리"><a href="#hexo-명령어-정리" class="headerlink" title="hexo 명령어 정리"></a>hexo 명령어 정리</h1><hr>
+<h3 id="마크다운-JAVA보기"><a href="#마크다운-JAVA보기" class="headerlink" title="마크다운 JAVA보기"></a>마크다운 JAVA보기</h3><blockquote>
+<p>월요일에</p>
+<blockquote>
+<p>시험이 있었대요;</p>
+</blockquote>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>Plus</th>
+<th>Minus</th>
+<th>Interest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>블로그를 만들었다.</td>
+<td>손이 많이 간다.</td>
+<td>노션이랑 비슷하다.</td>
+</tr>
+</tbody></table>
+<table>
+<thead>
+<tr>
+<th align="left">Plus</th>
+<th align="center">Minus</th>
+<th align="right">Interest</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">블로그를 만들었다.</td>
+<td align="center">손이 많이 간다.</td>
+<td align="right">노션이랑 비슷하다.</td>
+</tr>
+<tr>
+<td align="left">Left</td>
+<td align="center">Center</td>
+<td align="right">Right</td>
+</tr>
+</tbody></table>
+<p><code>이건 뭘까?</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">System.out.println&#123;<span class="string">&quot;나 JAVA봐라&quot;</span>&#125;;</span><br></pre></td></tr></table></figure>
+
+<img width="626" alt="스크린샷 2023-10-21 오후 11 47 40" src="https://github.com/yejincode/yejincode/assets/69861207/f7a280bd-c6a6-4123-b137-c3c05417ce3d">
+
+
+
+<h3 id="hexo로-포스트-작성하기"><a href="#hexo로-포스트-작성하기" class="headerlink" title="hexo로 포스트 작성하기"></a>hexo로 포스트 작성하기</h3><ol>
+<li>포스트 제목 쓰기<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new post <span class="string">&quot;제목&quot;</span></span><br></pre></td></tr></table></figure></li>
+<li>생성된 파일 열기 (vs code로)<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">code <span class="built_in">source</span>/_posts/hexo-명령어-정리.md </span><br></pre></td></tr></table></figure></li>
+<li>열린 파일에서 마크다운 문법에 맞게 글 작성하기</li>
+<li>로컬에서 실시간으로 확인 간응ㅋ -&gt; 저장 필수!<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo s -o</span><br></pre></td></tr></table></figure></li>
+<li>작성 완료 했으면 <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h3 id="작성한-글-삭제하기"><a href="#작성한-글-삭제하기" class="headerlink" title="작성한 글 삭제하기"></a>작성한 글 삭제하기</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">rm</span> -rf <span class="string">&quot;파일경로&quot;</span></span><br></pre></td></tr></table></figure>
+
+
+<p>코드 정리</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: hexo 명령어 정리</span><br><span class="line"><span class="built_in">date</span>: 2023-10-21 23:25:52</span><br><span class="line">tags:</span><br><span class="line">- markdown</span><br><span class="line">- kernel360</span><br><span class="line">- hexo</span><br><span class="line">- 깃블로그</span><br><span class="line">categories:</span><br><span class="line">- etc</span><br><span class="line">---</span><br><span class="line"></span><br><span class="line"><span class="comment"># hexo 명령어 정리</span></span><br><span class="line">---</span><br><span class="line"><span class="comment">### 마크다운 JAVA보기 </span></span><br><span class="line"></span><br><span class="line">&gt; 월요일에</span><br><span class="line">&gt;&gt; 시험이 있었대요;</span><br><span class="line"></span><br><span class="line">Plus|Minus|Interest</span><br><span class="line">---|---|---</span><br><span class="line">블로그를 만들었다.|손이 많이 간다.|노션이랑 비슷하다.</span><br><span class="line"></span><br><span class="line">|Plus|Minus|Interest|</span><br><span class="line">|:---|:---:|---:|</span><br><span class="line">블로그를 만들었다.|손이 많이 간다.|노션이랑 비슷하다.</span><br><span class="line">|Left|Center|Right|</span><br><span class="line"></span><br><span class="line">`이건 뭘까?`</span><br><span class="line"></span><br><span class="line">```java</span><br><span class="line">System.out.println&#123;<span class="string">&quot;나 JAVA봐라&quot;</span>&#125;;</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line">&lt;img width=<span class="string">&quot;626&quot;</span> alt=<span class="string">&quot;스크린샷 2023-10-21 오후 11 47 40&quot;</span> src=<span class="string">&quot;https://github.com/yejincode/yejincode/assets/69861207/f7a280bd-c6a6-4123-b137-c3c05417ce3d&quot;</span>&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">### hexo로 포스트 작성하기</span></span><br><span class="line">1. 포스트 제목 쓰기</span><br><span class="line">```bash</span><br><span class="line">hexo new post <span class="string">&quot;제목&quot;</span></span><br><span class="line">```</span><br><span class="line">2. 생성된 파일 열기 (vs code로)</span><br><span class="line">```bash</span><br><span class="line">code <span class="built_in">source</span>/_posts/hexo-명령어-정리.md </span><br><span class="line">```</span><br><span class="line">3. 열린 파일에서 마크다운 문법에 맞게 글 작성하기</span><br><span class="line">4. 로컬에서 실시간으로 확인 간응ㅋ -&gt; 저장 필수!</span><br><span class="line">```bash</span><br><span class="line">hexo s -o</span><br><span class="line">```</span><br><span class="line">5. 작성 완료 했으면 </span><br><span class="line">```bash</span><br><span class="line">hexo clean</span><br><span class="line">hexo d -g</span><br><span class="line">```</span><br><span class="line"></span><br><span class="line"><span class="comment">### 작성한 글 삭제하기</span></span><br><span class="line">```bash</span><br><span class="line"><span class="built_in">rm</span> -rf <span class="string">&quot;파일경로&quot;</span></span><br><span class="line">```</span><br></pre></td></tr></table></figure>
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC"><span class="toc-number">1.</span> <span class="toc-text">hexo 명령어 정리</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EB%A7%88%ED%81%AC%EB%8B%A4%EC%9A%B4-JAVA%EB%B3%B4%EA%B8%B0"><span class="toc-number">1.0.1.</span> <span class="toc-text">마크다운 JAVA보기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#hexo%EB%A1%9C-%ED%8F%AC%EC%8A%A4%ED%8A%B8-%EC%9E%91%EC%84%B1%ED%95%98%EA%B8%B0"><span class="toc-number">1.0.2.</span> <span class="toc-text">hexo로 포스트 작성하기</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%9E%91%EC%84%B1%ED%95%9C-%EA%B8%80-%EC%82%AD%EC%A0%9C%ED%95%98%EA%B8%B0"><span class="toc-number">1.0.3.</span> <span class="toc-text">작성한 글 삭제하기</span></a></li></ol></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&text=hexo 명령어 정리"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&is_video=false&description=hexo 명령어 정리"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=hexo 명령어 정리&body=Check out this article: https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&title=hexo 명령어 정리"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&name=hexo 명령어 정리&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/&t=hexo 명령어 정리"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    yejin song
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
