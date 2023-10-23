@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="docker를 사용하여 mysql 이미지 설치하기본 포스팅은 제가 기억하기 위해 남기는 것입니다.. 1. homebrew 사용해서 docker 설치하기1brew install --cask docker  잘 설치 되었는지 버전 확인 해보기 1docker -v  2. MySQL 이미지 설치1docker pull mysql  잘 설치 되었는지 docker에 다운">
+<meta property="og:type" content="article">
+<meta property="og:title" content="docker mysql 설치 방법">
+<meta property="og:url" content="https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/index.html">
+<meta property="og:site_name" content="나 JAVA 봐라">
+<meta property="og:description" content="docker를 사용하여 mysql 이미지 설치하기본 포스팅은 제가 기억하기 위해 남기는 것입니다.. 1. homebrew 사용해서 docker 설치하기1brew install --cask docker  잘 설치 되었는지 버전 확인 해보기 1docker -v  2. MySQL 이미지 설치1docker pull mysql  잘 설치 되었는지 docker에 다운">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/bfbe3886-1a1e-4e7f-82c0-4df4f6f9eb7b">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/cd822efe-0580-4bfe-a0c1-e29d786a6b76">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/c0d1fc27-f41a-4328-9f91-d2b783eb68a3">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/7591dc53-2b66-4db5-81bf-3012e8dc0804">
+<meta property="article:published_time" content="2023-10-23T10:34:07.000Z">
+<meta property="article:modified_time" content="2023-10-23T11:28:40.695Z">
+<meta property="article:author" content="yejin song">
+<meta property="article:tag" content="kernel360">
+<meta property="article:tag" content="docker">
+<meta property="article:tag" content="mysql">
+<meta property="article:tag" content="workbench">
+<meta property="article:tag" content="E2E">
+<meta property="article:tag" content="teach_me">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/bfbe3886-1a1e-4e7f-82c0-4df4f6f9eb7b">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>docker mysql 설치 방법</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/10/21/hexo-%EB%AA%85%EB%A0%B9%EC%96%B4-%EC%A0%95%EB%A6%AC/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&text=docker mysql 설치 방법"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&is_video=false&description=docker mysql 설치 방법"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=docker mysql 설치 방법&body=Check out this article: https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&name=docker mysql 설치 방법&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&t=docker mysql 설치 방법"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-mysql-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"><span class="toc-number">1.</span> <span class="toc-text">docker를 사용하여 mysql 이미지 설치하기</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-homebrew-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-docker-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1. homebrew 사용해서 docker 설치하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-MySQL-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%84%A4%EC%B9%98"><span class="toc-number">1.2.</span> <span class="toc-text">2. MySQL 이미지 설치</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Mysql-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1"><span class="toc-number">1.3.</span> <span class="toc-text">3. Mysql 컨테이너 생성</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%9D%98-MySQL-%EC%A0%91%EC%86%8D%ED%95%98%EA%B8%B0"><span class="toc-number">1.4.</span> <span class="toc-text">4. 컨테이너의 MySQL 접속하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Workbench%EC%97%90%EC%84%9C-docker%EC%97%90-%EB%9D%84%EC%9A%B4-MySQL-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0"><span class="toc-number">1.5.</span> <span class="toc-text">5. Workbench에서 docker에 띄운 MySQL 연결하기</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        docker mysql 설치 방법
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">yejin song</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-23T10:34:07.000Z" class="dt-published" itemprop="datePublished">2023-10-23</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/etc/">etc</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/E2E/" rel="tag">E2E</a>, <a class="p-category" href="/tags/docker/" rel="tag">docker</a>, <a class="p-category" href="/tags/kernel360/" rel="tag">kernel360</a>, <a class="p-category" href="/tags/mysql/" rel="tag">mysql</a>, <a class="p-category" href="/tags/teach-me/" rel="tag">teach_me</a>, <a class="p-category" href="/tags/workbench/" rel="tag">workbench</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="docker를-사용하여-mysql-이미지-설치하기"><a href="#docker를-사용하여-mysql-이미지-설치하기" class="headerlink" title="docker를 사용하여 mysql 이미지 설치하기"></a>docker를 사용하여 mysql 이미지 설치하기</h1><p>본 포스팅은 제가 기억하기 위해 남기는 것입니다..</p>
+<h2 id="1-homebrew-사용해서-docker-설치하기"><a href="#1-homebrew-사용해서-docker-설치하기" class="headerlink" title="1. homebrew 사용해서 docker 설치하기"></a>1. homebrew 사용해서 docker 설치하기</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install --cask docker</span><br></pre></td></tr></table></figure>
+
+<p>잘 설치 되었는지 버전 확인 해보기</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-MySQL-이미지-설치"><a href="#2-MySQL-이미지-설치" class="headerlink" title="2. MySQL 이미지 설치"></a>2. MySQL 이미지 설치</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker pull mysql</span><br></pre></td></tr></table></figure>
+
+<p>잘 설치 되었는지 docker에 다운된 이미지 확인하기</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
+
+<p>이미지가 다운 받아졌다면 도커의 대시보드 이미지 탭에서도 확인 가능하다.<br><img width="1238" alt="image" src="https://github.com/yejincode/yejincode.github.io/assets/69861207/bfbe3886-1a1e-4e7f-82c0-4df4f6f9eb7b"></p>
+<h2 id="3-Mysql-컨테이너-생성"><a href="#3-Mysql-컨테이너-생성" class="headerlink" title="3. Mysql 컨테이너 생성"></a>3. Mysql 컨테이너 생성</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name mysql-comtainer -e MYSQL_ROOT_PASSWORD=&lt;password&gt; -d -p 3306:3306 mysql:latest</span><br></pre></td></tr></table></figure>
+<ul>
+<li>–name : 컨테이너 이름을 생성, 실행한다.</li>
+<li>e : 컨테이너 내에서 사용할 환경변수를 설정한다.</li>
+<li>MYSQL_ROOT_PASSWORD&#x3D; : MYSQL의 ROOT 권한의 비밀번호를 설정한다.</li>
+<li>-d : detach 모드로 컨테이너를 실행한다. 컨테이너가 백그라운드로 실행되도록 한다.</li>
+<li>-p &lt;호스트 포트&gt; &lt;컨테이너 포트&gt; : 호스트와 컨테이너의 포트를 연결한다.  </li>
+<li>mysql:latest : 컨테이너에 사용할 이미지 -&gt; 도커 대시보드 이미지 탭에서 확인해보면 tag가 latest로 되어있다.</li>
+</ul>
+<p>잘 생성되었는지 컨테이너 목록을 조회해 볼 수 있다.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker ps -a</span><br></pre></td></tr></table></figure>
+<p>잘 생성 되었다면 대시보드에서도 컨테이너를 조회할 수 있다.<br><img width="1234" alt="image" src="https://github.com/yejincode/yejincode.github.io/assets/69861207/cd822efe-0580-4bfe-a0c1-e29d786a6b76"></p>
+<h2 id="4-컨테이너의-MySQL-접속하기"><a href="#4-컨테이너의-MySQL-접속하기" class="headerlink" title="4. 컨테이너의 MySQL 접속하기"></a>4. 컨테이너의 MySQL 접속하기</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="built_in">exec</span> -it mysql-container bash</span><br></pre></td></tr></table></figure>
+
+<p>컨테이너 대시보드에서도 컨테이너와 연결된 터미널을 열 수 있다. </p>
+<h2 id="5-Workbench에서-docker에-띄운-MySQL-연결하기"><a href="#5-Workbench에서-docker에-띄운-MySQL-연결하기" class="headerlink" title="5. Workbench에서 docker에 띄운 MySQL 연결하기"></a>5. Workbench에서 docker에 띄운 MySQL 연결하기</h2><img width="1069" alt="image" src="https://github.com/yejincode/yejincode.github.io/assets/69861207/c0d1fc27-f41a-4328-9f91-d2b783eb68a3">
+
+<p>MySQL Connections 옆의 + 아이콘을 클릭하여 New Connection을 작성한다.<br>docker mysql image에서 설정해준 포트 번호를 써주고 username과 password도 설정해준다.<br>Test Connection을 실행하여 연결에 문제가 없는지 확인한다.<br>사실 나 같은 경우에는 </p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Connection Warning</span><br><span class="line"></span><br><span class="line">Incompatible/nonstandard server version or connection protocol detected (8.1.0).</span><br><span class="line"></span><br><span class="line">A connection to this database can be established but some MySQL Workbench features may not work properly since the database is not fully compatible with the supported versions of MySQL.</span><br><span class="line"></span><br><span class="line">MySQL Workbench is developed and tested for MySQL Server versions 5.6, 5.7 and 8.0 </span><br></pre></td></tr></table></figure>
+
+<p>같은 경고 메시지가 떴지만.. 일단은 프로젝트에 연결하여 서버 실행하는 것이 목적이었기 때문에 무시하고 넘겼다. 후에 진행 중 문제가 생긴다면 다시 해결해야겠다. </p>
+<img width="1037" alt="image" src="https://github.com/yejincode/yejincode.github.io/assets/69861207/7591dc53-2b66-4db5-81bf-3012e8dc0804">
+
+<p>workbench를 통해 DB를 생성했다면, 인텔리제이의 데이터베이스 탭을 사용하여 생성한 DB를 연결해준다.<br>연결 테스트 성공한 후 적용 -&gt; 확인 해주면 연결 완.</p>
+<p>이 후 run 하면 에러 없이 서버가 돌아간다.<br>앞으로 한 달간 프로젝트 진행예정이라 진행 중 배운 내용들은 수시로 업로드 예정 !</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#docker%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EC%97%AC-mysql-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"><span class="toc-number">1.</span> <span class="toc-text">docker를 사용하여 mysql 이미지 설치하기</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-homebrew-%EC%82%AC%EC%9A%A9%ED%95%B4%EC%84%9C-docker-%EC%84%A4%EC%B9%98%ED%95%98%EA%B8%B0"><span class="toc-number">1.1.</span> <span class="toc-text">1. homebrew 사용해서 docker 설치하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-MySQL-%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%84%A4%EC%B9%98"><span class="toc-number">1.2.</span> <span class="toc-text">2. MySQL 이미지 설치</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Mysql-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88-%EC%83%9D%EC%84%B1"><span class="toc-number">1.3.</span> <span class="toc-text">3. Mysql 컨테이너 생성</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%EC%BB%A8%ED%85%8C%EC%9D%B4%EB%84%88%EC%9D%98-MySQL-%EC%A0%91%EC%86%8D%ED%95%98%EA%B8%B0"><span class="toc-number">1.4.</span> <span class="toc-text">4. 컨테이너의 MySQL 접속하기</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-Workbench%EC%97%90%EC%84%9C-docker%EC%97%90-%EB%9D%84%EC%9A%B4-MySQL-%EC%97%B0%EA%B2%B0%ED%95%98%EA%B8%B0"><span class="toc-number">1.5.</span> <span class="toc-text">5. Workbench에서 docker에 띄운 MySQL 연결하기</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&text=docker mysql 설치 방법"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&is_video=false&description=docker mysql 설치 방법"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=docker mysql 설치 방법&body=Check out this article: https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&title=docker mysql 설치 방법"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&name=docker mysql 설치 방법&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/&t=docker mysql 설치 방법"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    yejin song
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
