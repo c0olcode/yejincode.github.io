@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="자료구조와 알고리즘의 이해01 . 자료구조와 알고리즘이란 자료구조란?  용어: 자료구조, 데이터 구조, data structure 대량의 데이터를 효율적으로 관리할 수 있는 데이터의 구조 (현실세계의 정보를 프로그래밍으로 바꾸려면 어떻게 변환해서 컴퓨터에 저장할지) 어떤 데이터 구조를 사용하냐에 따라, 코드 효율이 달라짐   효율적으로 데이터를 관리하는 예">
+<meta property="og:type" content="article">
+<meta property="og:title" content="배열,큐,스택,링크드리스트">
+<meta property="og:url" content="https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/index.html">
+<meta property="og:site_name" content="나 JAVA 봐라">
+<meta property="og:description" content="자료구조와 알고리즘의 이해01 . 자료구조와 알고리즘이란 자료구조란?  용어: 자료구조, 데이터 구조, data structure 대량의 데이터를 효율적으로 관리할 수 있는 데이터의 구조 (현실세계의 정보를 프로그래밍으로 바꾸려면 어떻게 변환해서 컴퓨터에 저장할지) 어떤 데이터 구조를 사용하냐에 따라, 코드 효율이 달라짐   효율적으로 데이터를 관리하는 예">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-10-27T09:51:55.000Z">
+<meta property="article:modified_time" content="2023-10-27T09:54:50.238Z">
+<meta property="article:author" content="yejin song">
+<meta property="article:tag" content="자료구조">
+<meta property="article:tag" content="CS">
+<meta property="article:tag" content="배열">
+<meta property="article:tag" content="큐">
+<meta property="article:tag" content="스택">
+<meta property="article:tag" content="링크드리스트">
+<meta name="twitter:card" content="summary">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>배열,큐,스택,링크드리스트</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/10/23/docker-mysql-%EC%84%A4%EC%B9%98-%EB%B0%A9%EB%B2%95/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&text=배열,큐,스택,링크드리스트"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&is_video=false&description=배열,큐,스택,링크드리스트"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=배열,큐,스택,링크드리스트&body=Check out this article: https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&name=배열,큐,스택,링크드리스트&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&t=배열,큐,스택,링크드리스트"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EC%9D%B4%ED%95%B4"><span class="toc-number">1.</span> <span class="toc-text">자료구조와 알고리즘의 이해</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%B4%EB%9E%80"><span class="toc-number">1.1.</span> <span class="toc-text">01 . 자료구조와 알고리즘이란</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EB%B0%B0%EC%97%B4"><span class="toc-number">2.</span> <span class="toc-text">배열</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%EB%B0%B0%EC%97%B4"><span class="toc-number">2.1.</span> <span class="toc-text">01 . 배열</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%ED%8C%8C%EC%9D%B4%EC%8D%AC%EA%B3%BC-%EB%B0%B0%EC%97%B4"><span class="toc-number">2.2.</span> <span class="toc-text">02. 파이썬과 배열</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03-%ED%81%90"><span class="toc-number">3.</span> <span class="toc-text">03. 큐</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%ED%81%90-Queue-1"><span class="toc-number">3.1.</span> <span class="toc-text">01. 큐 (Queue) -1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#04-%EC%8A%A4%ED%83%9D"><span class="toc-number">4.</span> <span class="toc-text">04. 스택</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#05-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8"><span class="toc-number">5.</span> <span class="toc-text">05. 링크드리스트</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%EB%A7%81%ED%81%AC%EB%93%9C-%EB%A6%AC%EC%8A%A4%ED%8A%B8-Linked-List-%EA%B5%AC%EC%A1%B0"><span class="toc-number">5.1.</span> <span class="toc-text">01. 링크드 리스트(Linked List) 구조</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%EB%A7%81%ED%81%AC%EB%93%9C-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%9E%A5%EB%8B%A8%EC%A0%90"><span class="toc-number">5.2.</span> <span class="toc-text">02. 링크드 리스트의 장단점</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8"><span class="toc-number">5.3.</span> <span class="toc-text">03. 다양한 링크드리스트</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        배열,큐,스택,링크드리스트
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">yejin song</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-10-27T09:51:55.000Z" class="dt-published" itemprop="datePublished">2023-10-27</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/Computer-Science/">Computer Science</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/CS/" rel="tag">CS</a>, <a class="p-category" href="/tags/%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/" rel="tag">링크드리스트</a>, <a class="p-category" href="/tags/%EB%B0%B0%EC%97%B4/" rel="tag">배열</a>, <a class="p-category" href="/tags/%EC%8A%A4%ED%83%9D/" rel="tag">스택</a>, <a class="p-category" href="/tags/%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0/" rel="tag">자료구조</a>, <a class="p-category" href="/tags/%ED%81%90/" rel="tag">큐</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h1 id="자료구조와-알고리즘의-이해"><a href="#자료구조와-알고리즘의-이해" class="headerlink" title="자료구조와 알고리즘의 이해"></a>자료구조와 알고리즘의 이해</h1><h2 id="01-자료구조와-알고리즘이란"><a href="#01-자료구조와-알고리즘이란" class="headerlink" title="01 . 자료구조와 알고리즘이란"></a>01 . 자료구조와 알고리즘이란</h2><ul>
+<li><p>자료구조란?</p>
+<ul>
+<li>용어: 자료구조, 데이터 구조, data structure</li>
+<li>대량의 데이터를 효율적으로 관리할 수 있는 데이터의 구조 (현실세계의 정보를 프로그래밍으로 바꾸려면 어떻게 변환해서 컴퓨터에 저장할지)</li>
+<li>어떤 데이터 구조를 사용하냐에 따라, 코드 효율이 달라짐</li>
+</ul>
+</li>
+<li><p>효율적으로 데이터를 관리하는 예</p>
+<ul>
+<li>우편번호: 5자리 우편번호로 국가의 기초구역을 제공함.</li>
+<li>학생관리: 학년, 반, 번호를 학생에게 부여해서 학생부 관리함.</li>
+</ul>
+<p>→ 잘 구조화된 예시 → 프로그래밍도 똑같다.</p>
+</li>
+<li><p>대표적인 자료구조 : 배열, 스택, 큐, 링크드 리스트, 해쉬 테이블, 힙 등</p>
+<ul>
+<li>현실 세계의 가장 대표적인 데이터 구조? : 사전</li>
+</ul>
+</li>
+</ul>
+<hr>
+<ul>
+<li><p>알고리즘이란?</p>
+<ul>
+<li>용어: 알고리즘 , algorithm</li>
+<li>어떤 문제를 풀기 위한 절차&#x2F; 방법</li>
+<li>어떤 문제에 대해, 특정한 입력을 넣으면, 원하는 출력을 얻을 수 있도록 만드는 프로그래밍</li>
+</ul>
+<p>→ 현실세계의 대표적 알고리즘? : 백종원 레시피</p>
+</li>
+</ul>
+<hr>
+<ul>
+<li>자료구조와 알고리즘이 중요한 이유: 어떤 것을 쓰느냐에 따라 성능 차이가 크다.</li>
+</ul>
+<hr>
+<ul>
+<li>자료구조&#x2F;알고리즘, 파이썬<ul>
+<li>어떤 언어든 자료구조, 알고리즘 익힐 수 있음 : 이전에는 c,c++ 로만 작성하도록 했지만 최근 언어로 인한 제약은 없고, 가장 쉽게 배울 수 있는 언어로 파이썬을 많이 사용함.</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h1 id="배열"><a href="#배열" class="headerlink" title="배열"></a>배열</h1><h2 id="01-배열"><a href="#01-배열" class="headerlink" title="01 . 배열"></a>01 . 배열</h2><ol>
+<li>배열</li>
+</ol>
+<ul>
+<li>배열<ul>
+<li>데이터를 나열하고, 각 데이터를 인덱스에 대응하도록 구성한 데이터 구조</li>
+<li>파이썬에서는 리스트 타입이 배열 기능을 제공하고 있음.</li>
+</ul>
+</li>
+<li>배열이 왜 필요할까?<ul>
+<li>같은 종류의 데이터를 효율적으로 관리하기 위해 사용</li>
+<li>같은 종류의 데이터를 순차적으로 저장</li>
+</ul>
+</li>
+<li>배열의 장점<ul>
+<li>빠른 접근 가능 (인덱스)</li>
+</ul>
+</li>
+<li>배열의 단점<ul>
+<li>데이터의 추가 &#x2F; 삭제가 쉽지 않음<ul>
+<li>중간에 있는 데이터를 삭제할 경우, 뒤에 있는 데이터를 앞으로 끌어와서 빈 공간 없게 해야하나..? 등의 문제 발생</li>
+</ul>
+</li>
+<li>미리 최대 길이를 지정해야 함.<ul>
+<li>길이를 넘어갈 경우 데이터 추가하기 어려움. (이후 이런 문제로 리스트 생김)</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>파이썬과 C 언어의 배열 예제</li>
+</ol>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdio.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="type">int</span> <span class="title function_">main</span><span class="params">(<span class="type">int</span> argc, <span class="type">char</span> *argv[])</span></span><br><span class="line">&#123;</span><br><span class="line">	<span class="type">char</span> country[<span class="number">3</span>] = <span class="string">&quot;US&quot;</span>;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%c%c\\n&quot;</span>,country[<span class="number">0</span>],country[<span class="number">1</span>]);</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">&quot;%s\\n&quot;</span>,country);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">country = <span class="string">&#x27;US&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(country)</span><br><span class="line"></span><br><span class="line">country = country + <span class="string">&#x27;A&#x27;</span></span><br><span class="line"><span class="built_in">print</span>(country)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>C 언어의 경우, 최대 길이를 미리 지정해주기 때문에 데이터가 최대 길이를 넘어가게 되면 새로운 배열을 생성할 수 밖에 없다.</li>
+<li>파이썬의 경우, 최대 길이를 미리 지정해주지 않고 데이터를 추가하더라도 그에 따른 제약이 없다.</li>
+</ul>
+<h2 id="02-파이썬과-배열"><a href="#02-파이썬과-배열" class="headerlink" title="02. 파이썬과 배열"></a>02. 파이썬과 배열</h2><ul>
+<li>파이썬 리스트를 활용함.</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1차원 배열: 리스트로 구현</span></span><br><span class="line">data = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">print</span>(data)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 2차원 배열: 리스트로 구현</span></span><br><span class="line">data = [[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>],[<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>],[<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>]]</span><br><span class="line"><span class="built_in">print</span>(data[<span class="number">0</span>])</span><br><span class="line"><span class="built_in">print</span>(data[<span class="number">0</span>][<span class="number">0</span>])</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line">[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line"><span class="number">1</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">ArrayExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        <span class="comment">// 정수형 배열 선언 및 초기화</span></span><br><span class="line">        <span class="type">int</span>[] numbers = <span class="keyword">new</span> <span class="title class_">int</span>[<span class="number">5</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 배열에 값 할당</span></span><br><span class="line">        numbers[<span class="number">0</span>] = <span class="number">10</span>;</span><br><span class="line">        numbers[<span class="number">1</span>] = <span class="number">20</span>;</span><br><span class="line">        numbers[<span class="number">2</span>] = <span class="number">30</span>;</span><br><span class="line">        numbers[<span class="number">3</span>] = <span class="number">40</span>;</span><br><span class="line">        numbers[<span class="number">4</span>] = <span class="number">50</span>;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 배열 요소 출력</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> <span class="variable">i</span> <span class="operator">=</span> <span class="number">0</span>; i &lt; numbers.length; i++) &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;Element at index &quot;</span> + i + <span class="string">&quot;: &quot;</span> + numbers[i]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="03-큐"><a href="#03-큐" class="headerlink" title="03. 큐"></a>03. 큐</h1><h2 id="01-큐-Queue-1"><a href="#01-큐-Queue-1" class="headerlink" title="01. 큐 (Queue) -1"></a>01. 큐 (Queue) -1</h2><ul>
+<li><p>줄 서는 행위와 유사 : 가장 먼저 줄 서면 가장 먼저 입장함.</p>
+</li>
+<li><p>FIFO(First In, First Out) 또는 LILO(Last In, Last Out) 방식 → 스택과 꺼내는 순서 반대</p>
+</li>
+<li><p>Enqueue: 큐에 데이터를 넣는 기능 (tail 뒤로 들어감)</p>
+</li>
+<li><p>Dequeue: 큐에서 데이터를 꺼내는 기능</p>
+<ul>
+<li>시연 가능한 사이트</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://visualgo.net/en">visualising data structures and algorithms through animation - VisuAlgo</a></p>
+</li>
+<li><p>큐의 종류</p>
+<ul>
+<li><p>Queue : 가장 일반적인 큐 (FIFO)</p>
+</li>
+<li><p>LifoQueue : LILO(Last In, First Out) , 마지막에 넣은 데이터가 가장 먼저 출력됨.</p>
+<ul>
+<li>Stack과의 차이점? : Stack은 스레드 안전성이 보장되지 않으며 요소 타입이 제한적이기 때문에 LifoQueue 사용이 권장된다.</li>
+</ul>
+<p><code>Stack</code> 클래스는 스레드 안전성이 보장되지 않으며 요소 타입이 제한적인 클래스로, 다음과 같은 예시로 설명할 수 있습니다:</p>
+<ol>
+<li><strong>스레드 안전성</strong>:<ul>
+<li><code>Stack</code>은 스레드 안전성을 보장하지 않습니다. 여러 스레드가 동시에 <code>push</code> 또는 <code>pop</code>과 같은 연산을 수행하면 경쟁 조건이 발생할 수 있으며, 이는 예측 불가능한 결과를 초래할 수 있습니다. 다른 스레드로부터의 동시 접근을 방지하기 위해서는 별도의 동기화 메커니즘을 구현해야 합니다.</li>
+</ul>
+</li>
+<li><strong>요소 타입의 제한</strong>:<ul>
+<li><code>Stack</code> 클래스는 요소를 <code>Object</code> 타입으로 다룹니다. 이는 모든 종류의 객체를 스택에 넣을 수는 있지만, 제네릭을 지원하지 않아 컴파일 타임에 타입 안전성을 확인할 수 없습니다. 따라서 요소를 꺼낼 때 형변환을 해야하며, 이로 인해 런타임에 ClassCastException이 발생할 수 있습니다.</li>
+</ul>
+</li>
+</ol>
+<p>아래는 <code>Stack</code> 클래스를 사용하는 간단한 예시입니다:</p>
+  <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">Stack</span> <span class="variable">stack</span> <span class="operator">=</span> <span class="keyword">new</span> <span class="title class_">Stack</span>();</span><br><span class="line">stack.push(<span class="string">&quot;Hello&quot;</span>);</span><br><span class="line">stack.push(<span class="number">42</span>); <span class="comment">// 어떤 타입의 요소든 추가 가능</span></span><br><span class="line"><span class="type">String</span> <span class="variable">item</span> <span class="operator">=</span> (String) stack.pop(); <span class="comment">// 형변환 필요</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>이 예시에서 보듯이, <code>Stack</code>은 요소의 타입에 제한이 없어서 다양한 타입을 처리할 수 있지만, 컴파일 타임에 타입 안전성을 보장하지 않고 형변환이 필요하다는 단점이 있습니다.</p>
+<p>보다 안전하고 현대적인 대안으로, Java에서는 <code>java.util.concurrent</code> 패키지의 <code>ConcurrentLinkedDeque</code> 같은 자료 구조를 고려할 수 있습니다. 이러한 자료 구조는 스레드 안전성을 보장하면서도 제네릭을 지원하여 타입 안전성을 제공합니다.</p>
+<p>—&gt; GPT 답변</p>
+</li>
+<li><p>PriorityQueue : 데이터의 우선순위에 따라 pop (먼저 enqueue된 데이터가 먼저 dequeue되지 않는다.)</p>
+</li>
+</ul>
+</li>
+<li><p>어디에 큐가 많이 쓰일까?</p>
+<ul>
+<li><p>멀티 태스킹을 위한 프로세스 스케쥴링 방식을 구현하기 위해 많이 사용됨.</p>
+</li>
+<li><p>GPT 답변</p>
+<p>큐(Queue) 자료 구조는 다양한 컴퓨터과학 및 운영체제 개발 분야에서 멀티태스킹 및 프로세스 스케줄링에 활용됩니다. 프로세스 스케줄링에서 큐를 사용하는 몇 가지 예시는 다음과 같습니다:</p>
+<ol>
+<li><strong>Round Robin 스케줄링</strong>:<ul>
+<li>Round Robin은 CPU 스케줄링의 한 형태로, 여러 프로세스가 CPU 시간을 공유하는 환경에서 사용됩니다. 각 프로세스는 동일한 시간 할당량(타임 슬라이스)을 받고, 실행 중에 타임 슬라이스가 끝나면 큐의 뒤로 이동하고 다른 프로세스에게 CPU를 양보합니다. 이때 큐는 라운드 로빈 방식으로 동작합니다.</li>
+</ul>
+</li>
+<li><strong>우선 순위 기반 스케줄링</strong>:<ul>
+<li>프로세스의 우선 순위를 기반으로 큐를 사용하여 스케줄링할 수 있습니다. 높은 우선 순위를 가진 프로세스가 먼저 실행되고, 우선 순위가 낮은 프로세스는 큐의 뒤로 이동합니다.</li>
+</ul>
+</li>
+<li><strong>멀티레벨 큐 스케줄링</strong>:<ul>
+<li>멀티레벨 큐 스케줄링은 여러 개의 큐를 사용하여 프로세스를 스케줄링합니다. 각 큐는 다른 우선 순위를 가지며, 우선 순위에 따라 프로세스가 큐 간 이동합니다. 이 방식은 시스템 리소스를 효과적으로 활용하며, 상호 배타적인 우선 순위와 타임 슬라이스를 결합할 수 있습니다.</li>
+</ul>
+</li>
+<li><strong>기다리는 프로세스 큐</strong>:<ul>
+<li>프로세스 스케줄링 중에 실행 중인 프로세스가 입출력 작업 등을 기다려야 할 때, 이 프로세스는 기다리는 프로세스 큐에 들어갑니다. 대기 상태에 있는 프로세스는 큐에서 대기하며, 입출력 작업이 완료되면 큐에서 제거되고 실행 큐로 이동하여 CPU 시간을 얻게 됩니다.</li>
+</ul>
+</li>
+</ol>
+<p>이러한 큐 기반의 스케줄링 방식은 프로세스 간의 경쟁 조건을 관리하고 CPU 및 다른 시스템 리소스를 효율적으로 활용하기 위해 중요합니다. 프로세스 스케줄링은 운영체제의 핵심 역할 중 하나이며, 큐는 이러한 스케줄링을 구현하는 데 중요한 역할을 합니다.</p>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.LinkedList;</span><br><span class="line"><span class="keyword">import</span> java.util.Queue;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">QueueExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Queue&lt;String&gt; queue = <span class="keyword">new</span> <span class="title class_">LinkedList</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 큐에 요소 추가</span></span><br><span class="line">        queue.offer(<span class="string">&quot;Apple&quot;</span>);</span><br><span class="line">        queue.offer(<span class="string">&quot;Banana&quot;</span>);</span><br><span class="line">        queue.offer(<span class="string">&quot;Cherry&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 큐의 첫 번째 요소 확인 및 제거</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">front</span> <span class="operator">=</span> queue.poll();</span><br><span class="line">        System.out.println(<span class="string">&quot;Front of the queue: &quot;</span> + front);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 큐의 크기 확인</span></span><br><span class="line">        <span class="type">int</span> <span class="variable">size</span> <span class="operator">=</span> queue.size();</span><br><span class="line">        System.out.println(<span class="string">&quot;Queue size: &quot;</span> + size);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="04-스택"><a href="#04-스택" class="headerlink" title="04. 스택"></a>04. 스택</h1><ol>
+<li>스택</li>
+</ol>
+<ul>
+<li>데이터를 제한적으로 접근할 수 있는 구조<ul>
+<li>한쪽 끝에서만 자료를 넣거나 뺄 수 있는 구조</li>
+</ul>
+</li>
+<li>가장 나중에 쌓은 데이터를 가장 먼저 빼낼 수 있는 데이터 구조<ul>
+<li>큐: FIFO , 줄 서기</li>
+<li>스택: LIFO , 책 쌓기</li>
+</ul>
+</li>
+<li>스택구조<ul>
+<li>스택은 LIFO(Last In Last Out) 또는 FILO(First In, Last Out) 데이터 관리 방식을 따름.<ul>
+<li>LIFO: 마지막에 넣은 데이터를 가장 먼저 추출하는 데이터 관리 정책</li>
+<li>FILO: 처음에 넣은 데이터를 가장 마지막에 추출하는 데이터 관리 정책</li>
+</ul>
+</li>
+<li>대표적인 스택의 활용<ul>
+<li>컴퓨터 내부의 프로세스 구조의 함수 동작 방식</li>
+</ul>
+</li>
+<li>주요 기능<ul>
+<li>push(): 데이터를 스택에 넣기</li>
+<li>pop(): 데이터를 스택에서 꺼내기</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ol>
+<li>스택 구조와 프로세스 스택</li>
+</ol>
+<ul>
+<li>스택 구조는 프로세스 실행 구조의 가장 기본<ul>
+<li>함수 호출시 프로세스 실행 구조를 스택과 비교해서 이해 필요</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#재귀 함수</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">recursive</span>(<span class="params">data</span>):</span><br><span class="line">	<span class="keyword">if</span> data &lt; <span class="number">0</span> :</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;ended&#x27;</span>)</span><br><span class="line">	<span class="keyword">else</span>:</span><br><span class="line">		<span class="built_in">print</span>(data)</span><br><span class="line">		recursive(data-<span class="number">1</span>)</span><br><span class="line">		<span class="built_in">print</span>(<span class="string">&#x27;returned&#x27;</span>,data)</span><br><span class="line"></span><br><span class="line">---</span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">0</span></span><br><span class="line">ended</span><br><span class="line">returned <span class="number">0</span></span><br><span class="line">returned <span class="number">1</span></span><br><span class="line">returned <span class="number">2</span></span><br><span class="line">returned <span class="number">3</span></span><br><span class="line">returned <span class="number">4</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>자료 구조 스택의 장단점</li>
+</ol>
+<ul>
+<li>장점<ul>
+<li>구조가 단순해서, 구현이 쉽다</li>
+<li>데이터의 저장&#x2F; 읽기 속도가 빠르다</li>
+</ul>
+</li>
+<li>단점(일반적인 스택 구현시)<ul>
+<li>데이터 최대 갯수를 미리 정해야 함. (배열 단점과 같음)<ul>
+<li>파이썬은 재귀 함수 최대 1000번까지 호출 가능</li>
+</ul>
+</li>
+<li>저장 공간의 낭비가 발생할 수 있음<ul>
+<li>미리 최대 갯수만큼 저장 공간을 확보해야 함</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Stack;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">StackExample</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String[] args)</span> &#123;</span><br><span class="line">        Stack&lt;String&gt; stack = <span class="keyword">new</span> <span class="title class_">Stack</span>&lt;&gt;();</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 스택에 요소 추가</span></span><br><span class="line">        stack.push(<span class="string">&quot;First&quot;</span>);</span><br><span class="line">        stack.push(<span class="string">&quot;Second&quot;</span>);</span><br><span class="line">        stack.push(<span class="string">&quot;Third&quot;</span>);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 스택의 맨 위 요소 확인 및 제거</span></span><br><span class="line">        <span class="type">String</span> <span class="variable">top</span> <span class="operator">=</span> stack.pop();</span><br><span class="line">        System.out.println(<span class="string">&quot;Top of the stack: &quot;</span> + top);</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 스택이 비어 있는지 확인</span></span><br><span class="line">        <span class="type">boolean</span> <span class="variable">isEmpty</span> <span class="operator">=</span> stack.isEmpty();</span><br><span class="line">        System.out.println(<span class="string">&quot;Is the stack empty? &quot;</span> + isEmpty);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<hr>
+<h1 id="05-링크드리스트"><a href="#05-링크드리스트" class="headerlink" title="05. 링크드리스트"></a>05. 링크드리스트</h1><h2 id="01-링크드-리스트-Linked-List-구조"><a href="#01-링크드-리스트-Linked-List-구조" class="headerlink" title="01. 링크드 리스트(Linked List) 구조"></a>01. 링크드 리스트(Linked List) 구조</h2><ul>
+<li>연결 리스트라고도 함.</li>
+<li>배열의 단점: 미리 최대 길이 선언해야함 → 이런 문제 해결한 것이 연결 리스트임.<ul>
+<li>필요할 때 마다 데이터 추가 가능</li>
+</ul>
+</li>
+<li>링크드리스트: 떨어진 곳에 존재하는 데이터를 화살표로 연결해서 관리하는 데이터 구조<ul>
+<li><ul>
+<li>배열: 순서대로 데이터 담음</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>링크드 리스트 기본 구조와 용어<ul>
+<li>노드: 데이터 저장 단위(데이터값, 포인터)로 구성</li>
+<li>포인터: 각 노드 안에서 다음이나 이전의 노드와의 연결 정보를 가지고 있는 공간(다음 노드 주소 담고 있는 공간)<ul>
+<li>만약 포인터 값이 null 이라면? : 다음 노드 없음 &#x3D; 마지막 노드임</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>첫번째 노드의 주소만 알고 있으면 연결된 모든 리스트를 알 수 있음.<ul>
+<li>문제: 마지막 노드의 데이터가 필요하면 첫번째 노드부터 찾아가야함…. → 다양한 링크드 리스트가 존재한다.</li>
+</ul>
+</li>
+</ul>
+<h2 id="02-링크드-리스트의-장단점"><a href="#02-링크드-리스트의-장단점" class="headerlink" title="02. 링크드 리스트의 장단점"></a>02. 링크드 리스트의 장단점</h2><ul>
+<li>장점<ul>
+<li>미리 데이터 공간을 할당하지 않아도 됨 (↔ 배열은 미리 데이터 공간 할당함)</li>
+</ul>
+</li>
+<li>단점<ul>
+<li>연결을 위한 별도 데이터 공간이 필요하므로, 저장공간 효율이 높지 않음(↔ 배열은 상대적으로 효율은 좋음)</li>
+<li>연결 정보를 찾는 시간이 필요하므로 접근 속도가 느림 (↔배열은 인덱스 있어서 바로 접근 가능)</li>
+<li>중간 데이터 추가, 삭제 시, 앞뒤 데이터의 연결을 재구성해야 하는 부가적인 작업 필요<ul>
+<li>추가)<ul>
+<li>중간 노드의 포인터 값을 마지막 노드의 주소로 지정</li>
+<li>첫번째 노드의 포인터 값을 중간 노드의 주소로 지정</li>
+</ul>
+</li>
+<li>삭제)<ul>
+<li>head 삭제<ul>
+<li>head를 head의 다음 노드로 바꿔준 후, head 삭제</li>
+</ul>
+</li>
+<li>마지막 노드 삭제</li>
+<li>중간 노드 삭제<ul>
+<li>처음 노드의 포인터값이 중간 노드의 포인터값을 갖도록 하기</li>
+<li>중간 노드 삭제(연결 해제)</li>
+</ul>
+</li>
+<li>세 가지 경우 모두 결국에는 노드 삭제 할 때 포인터를 잘 연결해줘야함.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="03-다양한-링크드리스트"><a href="#03-다양한-링크드리스트" class="headerlink" title="03. 다양한 링크드리스트"></a>03. 다양한 링크드리스트</h2><ul>
+<li><p>더블 링크드리스트</p>
+<ul>
+<li>이중 연결 리스트<ul>
+<li>장점: 양방향으로 연결되어 있어서 노드 탐색이 양쪽으로 모두 가능함</li>
+<li>포인터 하나는 앞의 노드 주소, 다른 하나는 뒤의 노드 주소를 담음 → 양방향 연결</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>원형 리스트 : 마지막 노드의 포인터가 null이 아니고, 첫번째 노드의 주소를 담고 있음 (원형으로 돌 수 있삼)</p>
+</li>
+</ul>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%98-%EC%9D%B4%ED%95%B4"><span class="toc-number">1.</span> <span class="toc-text">자료구조와 알고리즘의 이해</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%EC%9E%90%EB%A3%8C%EA%B5%AC%EC%A1%B0%EC%99%80-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98%EC%9D%B4%EB%9E%80"><span class="toc-number">1.1.</span> <span class="toc-text">01 . 자료구조와 알고리즘이란</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EB%B0%B0%EC%97%B4"><span class="toc-number">2.</span> <span class="toc-text">배열</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%EB%B0%B0%EC%97%B4"><span class="toc-number">2.1.</span> <span class="toc-text">01 . 배열</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%ED%8C%8C%EC%9D%B4%EC%8D%AC%EA%B3%BC-%EB%B0%B0%EC%97%B4"><span class="toc-number">2.2.</span> <span class="toc-text">02. 파이썬과 배열</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#03-%ED%81%90"><span class="toc-number">3.</span> <span class="toc-text">03. 큐</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%ED%81%90-Queue-1"><span class="toc-number">3.1.</span> <span class="toc-text">01. 큐 (Queue) -1</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#04-%EC%8A%A4%ED%83%9D"><span class="toc-number">4.</span> <span class="toc-text">04. 스택</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#05-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8"><span class="toc-number">5.</span> <span class="toc-text">05. 링크드리스트</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#01-%EB%A7%81%ED%81%AC%EB%93%9C-%EB%A6%AC%EC%8A%A4%ED%8A%B8-Linked-List-%EA%B5%AC%EC%A1%B0"><span class="toc-number">5.1.</span> <span class="toc-text">01. 링크드 리스트(Linked List) 구조</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#02-%EB%A7%81%ED%81%AC%EB%93%9C-%EB%A6%AC%EC%8A%A4%ED%8A%B8%EC%9D%98-%EC%9E%A5%EB%8B%A8%EC%A0%90"><span class="toc-number">5.2.</span> <span class="toc-text">02. 링크드 리스트의 장단점</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#03-%EB%8B%A4%EC%96%91%ED%95%9C-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8"><span class="toc-number">5.3.</span> <span class="toc-text">03. 다양한 링크드리스트</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&text=배열,큐,스택,링크드리스트"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&is_video=false&description=배열,큐,스택,링크드리스트"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=배열,큐,스택,링크드리스트&body=Check out this article: https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&title=배열,큐,스택,링크드리스트"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&name=배열,큐,스택,링크드리스트&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/&t=배열,큐,스택,링크드리스트"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    yejin song
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
