@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="Kernel360최근까지 AI 대학원에 가야할지, 취업을 선택해야할지 많은 고민이 있었습니다. 이유는 1년 반이 넘도록 학부 연구를 하고 있어서 대학원에 가지 않기에는 시간과 노력이 아깝지만, 반면에 대학원에서 또 2년 동안의 연구를 진행하는 것에 대한 자신감이 없었습니다. 학부 연구를 하면서 학교 서버 성능의 한계로 인해 모델의 batch size를 크게">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Boot-Up : 개발 전 시동 걸기">
+<meta property="og:url" content="https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/index.html">
+<meta property="og:site_name" content="나 JAVA 봐라">
+<meta property="og:description" content="Kernel360최근까지 AI 대학원에 가야할지, 취업을 선택해야할지 많은 고민이 있었습니다. 이유는 1년 반이 넘도록 학부 연구를 하고 있어서 대학원에 가지 않기에는 시간과 노력이 아깝지만, 반면에 대학원에서 또 2년 동안의 연구를 진행하는 것에 대한 자신감이 없었습니다. 학부 연구를 하면서 학교 서버 성능의 한계로 인해 모델의 batch size를 크게">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/6cfa0080-9bdd-49a9-962e-9349af01b59c">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/d587f936-c9f6-4762-b260-a23fcf163eb9">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/72d03e23-7f9e-42d1-977c-0563a995a822">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/da32c11e-1a90-469e-914c-80e07c80965f">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/3db0d12f-4f79-417d-b672-6a48f3084fb4">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/64e06f98-c8a1-4889-9d3a-3eca75473e85">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/18533a09-d0a5-4482-a851-d300881baddf">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/7582058c-08ae-460f-b3a6-ba7e12c4c875">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/1f3e0d2d-634a-44c3-b0c8-c7b235b06fc8">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/21296b7b-9143-4e74-a30a-b29bbee0c963">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/b9ca97bd-13cc-434d-a825-1df345518abc">
+<meta property="article:published_time" content="2023-11-01T12:54:47.000Z">
+<meta property="article:modified_time" content="2023-11-01T13:09:11.127Z">
+<meta property="article:author" content="yejin song">
+<meta property="article:tag" content="kernel360">
+<meta property="article:tag" content="BootUp">
+<meta property="article:tag" content="프로젝트">
+<meta property="article:tag" content="회고">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/6cfa0080-9bdd-49a9-962e-9349af01b59c">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Boot-Up : 개발 전 시동 걸기</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/10/27/%EB%B0%B0%EC%97%B4-%ED%81%90-%EC%8A%A4%ED%83%9D-%EB%A7%81%ED%81%AC%EB%93%9C%EB%A6%AC%EC%8A%A4%ED%8A%B8/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&text=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&is_video=false&description=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Boot-Up : 개발 전 시동 걸기&body=Check out this article: https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&name=Boot-Up : 개발 전 시동 걸기&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&t=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kernel360"><span class="toc-number">1.</span> <span class="toc-text">Kernel360</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boot-Up-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%9E%80"><span class="toc-number">2.</span> <span class="toc-text">Boot-Up 프로젝트란?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flavor-Match-1-2%EC%9D%BC%EC%B0%A8"><span class="toc-number">3.</span> <span class="toc-text">Flavor Match (1,2일차)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C"><span class="toc-number">3.1.</span> <span class="toc-text">프로젝트 소개</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%ED%9A%8D%EB%A7%8C-%ED%95%9C-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D"><span class="toc-number">3.2.</span> <span class="toc-text">(기획만 한) 기술 스택</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%EB%8A%A5-%EB%AA%85%EC%84%B8%EC%84%9C"><span class="toc-number">3.3.</span> <span class="toc-text">기능 명세서</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B3%84"><span class="toc-number">3.4.</span> <span class="toc-text">화면 설계</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DB-ERD"><span class="toc-number">3.5.</span> <span class="toc-text">DB ERD</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Samsik-3%EC%9D%BC%EC%B0%A8"><span class="toc-number">4.</span> <span class="toc-text">Samsik (3일차)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C-1"><span class="toc-number">4.1.</span> <span class="toc-text">프로젝트 소개</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-%ED%98%91%EC%97%85"><span class="toc-number">4.2.</span> <span class="toc-text">Git 협업</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API-%EB%AA%85%EC%84%B8%EC%84%9C-%EC%9E%91%EC%84%B1"><span class="toc-number">4.3.</span> <span class="toc-text">API 명세서 작성</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%ED%9A%8C%EA%B3%A0"><span class="toc-number">5.</span> <span class="toc-text">회고</span></a></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Boot-Up : 개발 전 시동 걸기
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">yejin song</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-11-01T12:54:47.000Z" class="dt-published" itemprop="datePublished">2023-11-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/project/">project</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/BootUp/" rel="tag">BootUp</a>, <a class="p-category" href="/tags/kernel360/" rel="tag">kernel360</a>, <a class="p-category" href="/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" rel="tag">프로젝트</a>, <a class="p-category" href="/tags/%ED%9A%8C%EA%B3%A0/" rel="tag">회고</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="Kernel360"><a href="#Kernel360" class="headerlink" title="Kernel360"></a>Kernel360</h2><p>최근까지 AI 대학원에 가야할지, 취업을 선택해야할지 많은 고민이 있었습니다. 이유는 1년 반이 넘도록 학부 연구를 하고 있어서 대학원에 가지 않기에는 시간과 노력이 아깝지만, 반면에 대학원에서 또 2년 동안의 연구를 진행하는 것에 대한 자신감이 없었습니다.</p>
+<p>학부 연구를 하면서 학교 서버 성능의 한계로 인해 모델의 batch size를 크게 잡을 수 없거나 실험 자동화가 어렵다는 어려움을 겪었습니다. 물론, 이러한 문제들을 해결하기 위해 쉘 스크립트를 작성하는 등 노력을 기울였지만, 실제 기업에서 사용되는 인공지능 모델은 어떻게 훈련을 주기적으로 실행하는지 궁금했습니다.</p>
+<p>또한, 모델의 성능을 높이는 연구를 하더라도 실제로 모델이 상용화되지는 않기에, 연구에 대한 회의감을 가지기도 했습니다. 이런 이유로, 더 실용적인 일을 하고 싶었고, 그동안의 나의 연구 활동과 나름(?) 관련 있는 MLOps 분야에 관심을 갖게 되었습니다. </p>
+<p>개발은 대학교 2학년 2학기에 창업 준비팀에서 앱 프론트엔드 개발을 한 뒤로 거의 없었는데, 그 때만큼 몰입했던 순간이 없었습니다. 그래서 다시 한번 개발 공부 해야겠다 결심했고, Kernel360을 알게 되어 수많은(?) 선발 과정 끝에 크루로 합류하게 되었습니다. (압도적 감사)</p>
+<hr>
+<h2 id="Boot-Up-프로젝트란"><a href="#Boot-Up-프로젝트란" class="headerlink" title="Boot-Up 프로젝트란?"></a>Boot-Up 프로젝트란?</h2><p>협업에 대한 이해를 강화하고, 현실적 협업에 대해 경험하는 것을 목표로 합니다.<br>공유하는 프로젝트로 구현보다는 기능 설계와 문서화에 집중하며 하나의 프로젝트를 만들 때 어떤 과정으로 어떻게 협업을 해야 하는지 배웁니다. </p>
+<p>프로젝트는 총 3일 진행되었고 1, 2일차는 어떤 주제의 프로젝트를 진행할지 논의한 후 시스템 아키텍처, API 명세, UX&#x2F;UI, DB ERD 등을 작성 및 설계를 진행합니다. 이 후, 마지막 3일차에는 팀장을 제외한 팀이 바뀌어서 기존의 아이디어를 업데이트 하고 Github 문서화를 진행했습니다. </p>
+<hr>
+<h2 id="Flavor-Match-1-2일차"><a href="#Flavor-Match-1-2일차" class="headerlink" title="Flavor Match (1,2일차)"></a>Flavor Match (1,2일차)</h2><p>먼저 팀원들이 랜덤으로 구성되었고, 팀원들끼리 주제 가이드에 맞게 프로젝트 주제를 선정했습니다.</p>
+<ul>
+<li>주제 가이드<ol>
+<li>전세계에 배포하는 서비스 : 다양한 문화, 시차, 언어, 제도, 인프라를 고려한다.</li>
+<li>사람마다 관점이 다양한 주제 : 다양한 의견이 나올 수 있는 주제를 선정한다.</li>
+<li><strong>많은 기능이 있어야 하는 주제 : 일부러 기능을 많이 포함할 수 있도록 한다.</strong></li>
+</ol>
+</li>
+</ul>
+<p>위와 같은 가이드를 가지고 고민을 하다보니 Flavor Match 라는 프로젝트가 구상 되었습니다. </p>
+<p>(같은 가이드를 두고 여러 팀이 고민하다보니 결국은 다들 음식 관련한 프로젝트가 나오게 되었,,,)</p>
+<h3 id="프로젝트-소개"><a href="#프로젝트-소개" class="headerlink" title="프로젝트 소개"></a>프로젝트 소개</h3><ul>
+<li>배경: 세계의 많은 사람들의 문화, 종교, 신념, 취향 등이 서로 다르고 더욱 세분화되고 있으나 이런 개개인의 요구를 수용할 수 있는 식당을 찾는 서비스가 없다.</li>
+<li>목표: 다양한 사용자의 요구를 수용할 수 있는 음식점 추천 어플 구현하기</li>
+<li>사용한 협업 툴<ul>
+<li>Git, Notion : 노션을 기본으로 하고, 팀원 모두 Git에 익숙해지도록 노력했습니다.</li>
+</ul>
+</li>
+<li>Git 링크 : <a target="_blank" rel="noopener" href="https://github.com/Kernel360/boot-up1-flavor-match">https://github.com/Kernel360/boot-up1-flavor-match</a></li>
+</ul>
+<p>밑의 내용부터는 제가 참여한 부분에 대한 내용들 입니다!</p>
+<p>(기술 스택, 기능 명세서 작성, 화면 설계, DB ERD 작성)</p>
+<p>그리고,,, 센스있는 ‘Flavor Match’ 프로젝트명 작명은 제가 했습니다 ㅋ</p>
+<h3 id="기획만-한-기술-스택"><a href="#기획만-한-기술-스택" class="headerlink" title="(기획만 한) 기술 스택"></a>(기획만 한) 기술 스택</h3><ul>
+<li>FrontEnd<ul>
+<li>language: javascript</li>
+<li>framework: react native</li>
+</ul>
+</li>
+<li>BackEnd<ul>
+<li>language: java</li>
+<li>framework: spring boot, hadoop</li>
+<li>ORM: JPA</li>
+</ul>
+</li>
+<li>Database<ul>
+<li>MySQL, cassandra</li>
+</ul>
+</li>
+<li>External library, API<ul>
+<li>library: moneta, i18n</li>
+<li>API: Java Exchange Rate API, Google places API</li>
+</ul>
+</li>
+</ul>
+<p>기능 명세서에 맞게 어떤 기술을 사용해야 하는지 정했습니다. 제가 가지고 있는 지식을 짧았지만 다른 팀원분들 덕분에 어떤 기술이 어떤 기능 때문에 필요한지에 대해 알 수 있었고, 이 후 실제 개발하는 프로젝트에 있어서는 오버 엔지니어링 없이 기술의 장단점을 토대로 프로젝트 목적에 맞는 기술을 채택해야겠다고 생각했습니다. </p>
+<h3 id="기능-명세서"><a href="#기능-명세서" class="headerlink" title="기능 명세서"></a>기능 명세서</h3><p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/6cfa0080-9bdd-49a9-962e-9349af01b59c" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/d587f936-c9f6-4762-b260-a23fcf163eb9" alt="image"></p>
+<p>필요하다고 생각되는 기능들을 모조리 적어보았습니다. 기능 명세서를 먼저 작성해야 이 후 DB ERD, api 명세서, 화면 설계 등이 나오기 때문에 기능 명세서부터 시작했습니다 !</p>
+<h3 id="화면-설계"><a href="#화면-설계" class="headerlink" title="화면 설계"></a>화면 설계</h3><p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/72d03e23-7f9e-42d1-977c-0563a995a822" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/da32c11e-1a90-469e-914c-80e07c80965f" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/3db0d12f-4f79-417d-b672-6a48f3084fb4" alt="image"></p>
+<p><del>대학도 공대라 논문 리뷰하려고 ppt 만들면 교수님께서 그냥 흰 배경에 실험 결과표, 검정 글씨만 넣으라고 하셨기 때문에 디자인에 대해 정말 고민해본 적이 없었던 지난 날들…</del> </p>
+<p>팀원 분들 중 (당연하게도) 디자이너는 없기 때문에 ppt로 간단하게 화면 설계를 했습니다. 잠깐 동안의 경험이지만 디자이너의 소중함에 대해 생각해볼 수 있었습니다. (ㅠㅠ)</p>
+<p>그리고 디렉터님께서 화면 설계부터 하면 기능 명세, 시스템 아키텍처 작성 등이 더 쉬워진다는 팁을 주셨습니다 ! (너무 늦게 알았습니다 ㅠ.ㅠ )</p>
+<h3 id="DB-ERD"><a href="#DB-ERD" class="headerlink" title="DB ERD"></a>DB ERD</h3><p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/64e06f98-c8a1-4889-9d3a-3eca75473e85" alt="image"></p>
+<p>기능 명세서를 토대로 DB ERD를 작성했습니다.</p>
+<p>dbdiagram.io를 통해 작성했는데 바뀐 팀에서 draw.io를 사용하며 dbdiagram.io의 편리함을 뼈져리게 느꼈습니다. (한참 고생하다 dbdiagram.io로 바꿈)</p>
+<hr>
+<h2 id="Samsik-3일차"><a href="#Samsik-3일차" class="headerlink" title="Samsik (3일차)"></a>Samsik (3일차)</h2><p>슬슬 팀에 적응하려는 찰나, 랜덤으로 팀이 바뀌었습니다.</p>
+<p>먹을 것에 진심인 제게 딱 맞게도 ‘또’ 음식을 주제로 한 팀으로 오게 되었습니다.</p>
+<h3 id="프로젝트-소개-1"><a href="#프로젝트-소개-1" class="headerlink" title="프로젝트 소개"></a>프로젝트 소개</h3><ul>
+<li>목표: 해외에 나가서도 원하는 음식점을 찾을 수 있는 서비스 만들기</li>
+<li>사용한 협업 툴<ul>
+<li>Git, Notion : 노션을 기본으로 하고, 팀원 모두 Git에 익숙해지도록 노력했습니다.</li>
+</ul>
+</li>
+<li>Git 링크 : <a target="_blank" rel="noopener" href="https://github.com/Kernel360/boot-up1-samsik">https://github.com/Kernel360/boot-up1-samsik</a></li>
+</ul>
+<p>제가 팀에 와서 참여한 내용들입니다. </p>
+<h3 id="Git-협업"><a href="#Git-협업" class="headerlink" title="Git 협업"></a>Git 협업</h3><ul>
+<li>Project 기능</li>
+</ul>
+<p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/18533a09-d0a5-4482-a851-d300881baddf" alt="image"></p>
+<p>깃허브의 Project를 사용하여 구현해야할 기능들에 대한 이슈를 생성했습니다. </p>
+<ul>
+<li>PR 리뷰</li>
+</ul>
+<p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/7582058c-08ae-460f-b3a6-ba7e12c4c875" alt="image"></p>
+<p>팀원들을 리뷰어로 지정하고, 팀원 중 2명 이상이 approve 해야 merge할 수 있도록 했습니다. </p>
+<p>깃허브가 단순히 버전 관리만 하는 것이 아니라 협업을 위한 다양한 기능들이 있다는 것을 알았고 계속 사용해 나가면서 배워야겠습니다! <del>(깃허브 어려워요)</del></p>
+<h3 id="API-명세서-작성"><a href="#API-명세서-작성" class="headerlink" title="API 명세서 작성"></a>API 명세서 작성</h3><p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/1f3e0d2d-634a-44c3-b0c8-c7b235b06fc8" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/21296b7b-9143-4e74-a30a-b29bbee0c963" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/b9ca97bd-13cc-434d-a825-1df345518abc" alt="image"></p>
+<p>처음 팀에 이어서 API 명세서를 또 작성했습니다. 전의 팀과 다르게, 네이밍 컨벤션을 정해서 API 명세서를 작성했더니 통일되게 작성할 수 있었습니다.</p>
+<ul>
+<li>네이밍 컨벤션<ul>
+<li>생성 : create</li>
+<li>조회 : search, 복수 건 조회 시 뒤에 s 붙이기</li>
+<li>수정 : modify</li>
+<li>삭제 : delete</li>
+<li>가게관련 api는 &#x2F;owner가 prefix</li>
+<li>일반 유저 api는 &#x2F;</li>
+</ul>
+</li>
+</ul>
+<hr>
+<h2 id="회고"><a href="#회고" class="headerlink" title="회고"></a>회고</h2><p>당시에는 실제 개발을 하지 않았기 때문에 기획한 것이 어떤 식으로 동작이 되는지 감을 못 잡았습니다. 하지만 현재 글을 쓰는 시점(Boot-Up 프로젝트 2주 후)에 다른 개발 프로젝트를 진행 중인데, 개발 전에 꼼꼼하게 api와 DB ERD를 작성해야 하는 이유, 프로젝트에 맞는 기술 선택의 중요성 등에 대해 몸소 체험하고 있습니다. Boot-Up 프로젝트를 통해 개발 전의 필요한 과정들에 대해 배울 수 있었습니다.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Kernel360"><span class="toc-number">1.</span> <span class="toc-text">Kernel360</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boot-Up-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%9E%80"><span class="toc-number">2.</span> <span class="toc-text">Boot-Up 프로젝트란?</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Flavor-Match-1-2%EC%9D%BC%EC%B0%A8"><span class="toc-number">3.</span> <span class="toc-text">Flavor Match (1,2일차)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C"><span class="toc-number">3.1.</span> <span class="toc-text">프로젝트 소개</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%ED%9A%8D%EB%A7%8C-%ED%95%9C-%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D"><span class="toc-number">3.2.</span> <span class="toc-text">(기획만 한) 기술 스택</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%EB%8A%A5-%EB%AA%85%EC%84%B8%EC%84%9C"><span class="toc-number">3.3.</span> <span class="toc-text">기능 명세서</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B3%84"><span class="toc-number">3.4.</span> <span class="toc-text">화면 설계</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DB-ERD"><span class="toc-number">3.5.</span> <span class="toc-text">DB ERD</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Samsik-3%EC%9D%BC%EC%B0%A8"><span class="toc-number">4.</span> <span class="toc-text">Samsik (3일차)</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C-1"><span class="toc-number">4.1.</span> <span class="toc-text">프로젝트 소개</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Git-%ED%98%91%EC%97%85"><span class="toc-number">4.2.</span> <span class="toc-text">Git 협업</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#API-%EB%AA%85%EC%84%B8%EC%84%9C-%EC%9E%91%EC%84%B1"><span class="toc-number">4.3.</span> <span class="toc-text">API 명세서 작성</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%ED%9A%8C%EA%B3%A0"><span class="toc-number">5.</span> <span class="toc-text">회고</span></a></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&text=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&is_video=false&description=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Boot-Up : 개발 전 시동 걸기&body=Check out this article: https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&title=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&name=Boot-Up : 개발 전 시동 걸기&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/&t=Boot-Up : 개발 전 시동 걸기"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    yejin song
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
