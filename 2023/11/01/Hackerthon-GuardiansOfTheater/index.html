@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
+    <meta name="description" content="해커톤 프로젝트란?최소한의 기술적 완성도를 가진 결과물을 단시간에 만들어 봄으로써 자신의 기술적 실력을 파악하고, 빠른 학습에 대한 경험을 습득합니다.프로젝트를 진행하며 코드의 품질, 기술적 협업 등을 이해하는 것을 목표로 합니다. Kernel360에서 해커톤 프로젝트를 4일 동안 진행했고, Boot-Up 프로젝트와 마찬가지로 팀장을 제외하고서 1,2일차">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Hackerthon: GuardiansOfTheater">
+<meta property="og:url" content="https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/index.html">
+<meta property="og:site_name" content="나 JAVA 봐라">
+<meta property="og:description" content="해커톤 프로젝트란?최소한의 기술적 완성도를 가진 결과물을 단시간에 만들어 봄으로써 자신의 기술적 실력을 파악하고, 빠른 학습에 대한 경험을 습득합니다.프로젝트를 진행하며 코드의 품질, 기술적 협업 등을 이해하는 것을 목표로 합니다. Kernel360에서 해커톤 프로젝트를 4일 동안 진행했고, Boot-Up 프로젝트와 마찬가지로 팀장을 제외하고서 1,2일차">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/25a1804d-aa0c-4852-98d7-8ad058016660">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/33727914-7f08-41a1-8751-d0b4d1c2ed53">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/ec28094a-7d74-4c2a-b1a1-c1634e001fab">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/1589fda4-250d-4116-9fec-ada80c1670f6">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/36ee54c2-b7b0-4fed-a514-552e28041ed1">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/3c4e29b4-1758-4899-977b-4ca891df8003">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/f5d4da68-0dd0-4fb3-b483-b652ff902a52">
+<meta property="og:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/2ac89442-d27e-4ee8-8f21-892fc0ee8204">
+<meta property="article:published_time" content="2023-11-01T13:36:44.000Z">
+<meta property="article:modified_time" content="2023-11-01T13:39:20.317Z">
+<meta property="article:author" content="yejin song">
+<meta property="article:tag" content="kernel360">
+<meta property="article:tag" content="프로젝트">
+<meta property="article:tag" content="회고">
+<meta property="article:tag" content="Hackerthon">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://github.com/yejincode/yejincode.github.io/assets/69861207/25a1804d-aa0c-4852-98d7-8ad058016660">
+    
+    
+      
+        
+          <link rel="shortcut icon" href="/images/favicon.ico">
+        
+      
+      
+        
+          <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+        
+      
+      
+        
+          <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+        
+      
+    
+    <!-- title -->
+    <title>Hackerthon: GuardiansOfTheater</title>
+    <!-- async scripts -->
+    <!-- Google Analytics -->
+
+
+    <!-- Umami Analytics -->
+
+
+    <!-- styles -->
+    
+<link rel="stylesheet" href="/css/style.css">
+
+    <!-- persian styles -->
+    
+    <!-- rss -->
+    
+    
+	<!-- mathjax -->
+	
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#" aria-label="Menu"><i class="fa-solid fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" aria-label="Top" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fa-solid fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </span>
+    <br/>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" aria-label="Next post" href="/2023/11/01/Boot-Up-%EA%B0%9C%EB%B0%9C-%EC%A0%84-%EC%8B%9C%EB%8F%99-%EA%B1%B8%EA%B8%B0/"><i class="fa-solid fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" aria-label="Back to top" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" aria-label="Share post" href="#"><i class="fa-solid fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br/>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&text=Hackerthon: GuardiansOfTheater"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&is_video=false&description=Hackerthon: GuardiansOfTheater"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hackerthon: GuardiansOfTheater&body=Check out this article: https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/"><i class="fa-solid fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&name=Hackerthon: GuardiansOfTheater&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&t=Hackerthon: GuardiansOfTheater"><i class="fab fa-hacker-news " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    
+    
+      <div id="toc">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%ED%95%B4%EC%BB%A4%ED%86%A4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%9E%80"><span class="toc-number">1.</span> <span class="toc-text">해커톤 프로젝트란?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%A3%BC%EC%A0%9C-%EA%B0%80%EC%9D%B4%EB%93%9C"><span class="toc-number">1.1.</span> <span class="toc-text">주제 가이드</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D"><span class="toc-number">1.2.</span> <span class="toc-text">기술 스택</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GuardiansOfTheater"><span class="toc-number">2.</span> <span class="toc-text">GuardiansOfTheater</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C"><span class="toc-number">2.1.</span> <span class="toc-text">프로젝트 소개</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-1"><span class="toc-number">2.2.</span> <span class="toc-text">기술 스택</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%9A%94%EA%B5%AC-%EC%82%AC%ED%95%AD-%EB%AA%85%EC%84%B8%EC%84%9C"><span class="toc-number">2.3.</span> <span class="toc-text">요구 사항 명세서</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DB-ERD"><span class="toc-number">2.4.</span> <span class="toc-text">DB ERD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B2%8C"><span class="toc-number">2.5.</span> <span class="toc-text">화면 설게</span></a></li></ol></li></ol>
+      </div>
+    
+  </span>
+</div>
+
+    
+    <div class="content index py4 ">
+        
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle p-name" itemprop="name headline">
+        Hackerthon: GuardiansOfTheater
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author p-author h-card" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span class="p-name" itemprop="name">yejin song</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2023-11-01T13:36:44.000Z" class="dt-published" itemprop="datePublished">2023-11-01</time>
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fa-solid fa-archive"></i>
+        <a class="category-link" href="/categories/project/">project</a>
+    </div>
+
+
+      
+    <div class="article-tag">
+        <i class="fa-solid fa-tag"></i>
+        <a class="p-category" href="/tags/Hackerthon/" rel="tag">Hackerthon</a>, <a class="p-category" href="/tags/kernel360/" rel="tag">kernel360</a>, <a class="p-category" href="/tags/%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8/" rel="tag">프로젝트</a>, <a class="p-category" href="/tags/%ED%9A%8C%EA%B3%A0/" rel="tag">회고</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content e-content" itemprop="articleBody">
+    <h2 id="해커톤-프로젝트란"><a href="#해커톤-프로젝트란" class="headerlink" title="해커톤 프로젝트란?"></a>해커톤 프로젝트란?</h2><p>최소한의 기술적 완성도를 가진 결과물을 단시간에 만들어 봄으로써 자신의 기술적 실력을 파악하고, 빠른 학습에 대한 경험을 습득합니다.<br>프로젝트를 진행하며 코드의 품질, 기술적 협업 등을 이해하는 것을 목표로 합니다.</p>
+<p>Kernel360에서 해커톤 프로젝트를 4일 동안 진행했고, Boot-Up 프로젝트와 마찬가지로 팀장을 제외하고서 1,2일차 팀과 3,4일차 팀이 다릅니다. </p>
+<h3 id="주제-가이드"><a href="#주제-가이드" class="headerlink" title="주제 가이드"></a>주제 가이드</h3><ol>
+<li>프로젝트에 주어진 제한된 시간을 고려하여 주제를 선정한다.</li>
+<li>기획적 완성도, 창의성보다 작더라도 하나의 프로젝트를 기술적으로 완성하는 것에 중점을 둔다.</li>
+<li><strong>기능이 적게 포함되더라도 완성된 서비스를 구현할 수 있는 주제를 고안한다.</strong></li>
+<li>boot-up 주제와 설계 내용을 사용해도 된다.</li>
+<li>같은 주제라도 팀별로 구현 내용을 비교할 수 있기 때문에 다른 팀과 주제가 중복이 되어도 된다.</li>
+</ol>
+<h3 id="기술-스택"><a href="#기술-스택" class="headerlink" title="기술 스택"></a>기술 스택</h3><ol>
+<li><strong>툴이나 언어, 프레임워크를 제한하지 않으며 어떤 기술이든 빠르게 개발할 수 있는 기술 스택</strong>을 선택한다. </li>
+<li>Git, GitHub을 반드시 활용한다. (GitHub 저장소는 팀당 하나를 사용하며, 여러 저장소를 사용해야 할 경우 서브모듈을 사용하도록 한다.)</li>
+</ol>
+<hr>
+<h2 id="GuardiansOfTheater"><a href="#GuardiansOfTheater" class="headerlink" title="GuardiansOfTheater"></a>GuardiansOfTheater</h2><h3 id="프로젝트-소개"><a href="#프로젝트-소개" class="headerlink" title="프로젝트 소개"></a>프로젝트 소개</h3><ul>
+<li>배경: 뮤지컬, 연극 등이 진행되는 극장은 관객 모니터링을 위해 하우스 어셔들이 극장 곳곳에 배치 됩니다. 하지만 큰 대극장, 많은 관객 수에 비해 어셔 인력은 턱 없이 부족하기 때문에 관객의 돌발 행동(&#x3D;관크)이나 긴급한 상황에 적절하게 대처하는 것은 쉽지 않습니다. 지하철 이상행동 탐지 서비스에서 아이디어를 얻어, 관객의 행동을 모니터링 할 수 있는 모델을 서비스하는 프로젝트를 구상했습니다.</li>
+<li>목표: 간단한 AI 모델을 서빙하고, 로그인한 사용자만 모델에 접속하기</li>
+<li>Git 링크: <a target="_blank" rel="noopener" href="https://github.com/Kernel360/hackerthon1-GuardiansOfTheater">https://github.com/Kernel360/hackerthon1-GuardiansOfTheater</a></li>
+</ul>
+<h3 id="기술-스택-1"><a href="#기술-스택-1" class="headerlink" title="기술 스택"></a>기술 스택</h3><ul>
+<li>FrontEnd<ul>
+<li>bootstrap, java script, thymeleaf</li>
+</ul>
+</li>
+<li>BackEnd<ul>
+<li>Spring boot  버전 : 2.7.16 (자바 11)</li>
+<li>redis 7.2.1</li>
+</ul>
+</li>
+<li>Database<ul>
+<li>MySQL : 8.0.22</li>
+</ul>
+</li>
+<li>AI model<ul>
+<li>Teachablemachine - Pose Model</li>
+</ul>
+</li>
+</ul>
+<h3 id="요구-사항-명세서"><a href="#요구-사항-명세서" class="headerlink" title="요구 사항 명세서"></a>요구 사항 명세서</h3><p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/25a1804d-aa0c-4852-98d7-8ad058016660" alt="image"></p>
+<h3 id="DB-ERD"><a href="#DB-ERD" class="headerlink" title="DB ERD"></a>DB ERD</h3><p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/33727914-7f08-41a1-8751-d0b4d1c2ed53" alt="image"></p>
+<h3 id="화면-설게"><a href="#화면-설게" class="headerlink" title="화면 설게"></a>화면 설게</h3><p><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/ec28094a-7d74-4c2a-b1a1-c1634e001fab" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/1589fda4-250d-4116-9fec-ada80c1670f6" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/36ee54c2-b7b0-4fed-a514-552e28041ed1" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/3c4e29b4-1758-4899-977b-4ca891df8003" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/f5d4da68-0dd0-4fb3-b483-b652ff902a52" alt="image"><br><img src="https://github.com/yejincode/yejincode.github.io/assets/69861207/2ac89442-d27e-4ee8-8f21-892fc0ee8204" alt="image"></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+        
+          <li><a href="/">Home</a></li>
+        
+          <li><a href="/about/">About</a></li>
+        
+          <li><a href="/archives/">Writing</a></li>
+        
+          <li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    
+    
+      <div id="toc-footer" style="display: none">
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%ED%95%B4%EC%BB%A4%ED%86%A4-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EB%9E%80"><span class="toc-number">1.</span> <span class="toc-text">해커톤 프로젝트란?</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%A3%BC%EC%A0%9C-%EA%B0%80%EC%9D%B4%EB%93%9C"><span class="toc-number">1.1.</span> <span class="toc-text">주제 가이드</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D"><span class="toc-number">1.2.</span> <span class="toc-text">기술 스택</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#GuardiansOfTheater"><span class="toc-number">2.</span> <span class="toc-text">GuardiansOfTheater</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-%EC%86%8C%EA%B0%9C"><span class="toc-number">2.1.</span> <span class="toc-text">프로젝트 소개</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EA%B8%B0%EC%88%A0-%EC%8A%A4%ED%83%9D-1"><span class="toc-number">2.2.</span> <span class="toc-text">기술 스택</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%EC%9A%94%EA%B5%AC-%EC%82%AC%ED%95%AD-%EB%AA%85%EC%84%B8%EC%84%9C"><span class="toc-number">2.3.</span> <span class="toc-text">요구 사항 명세서</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DB-ERD"><span class="toc-number">2.4.</span> <span class="toc-text">DB ERD</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B2%8C"><span class="toc-number">2.5.</span> <span class="toc-text">화면 설게</span></a></li></ol></li></ol>
+      </div>
+    
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.facebook.com/sharer.php?u=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://twitter.com/share?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&text=Hackerthon: GuardiansOfTheater"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.linkedin.com/shareArticle?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://pinterest.com/pin/create/bookmarklet/?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&is_video=false&description=Hackerthon: GuardiansOfTheater"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Hackerthon: GuardiansOfTheater&body=Check out this article: https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/"><i class="fa-solid fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://getpocket.com/save?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://reddit.com/submit?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.stumbleupon.com/submit?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://digg.com/submit?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&title=Hackerthon: GuardiansOfTheater"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="http://www.tumblr.com/share/link?url=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&name=Hackerthon: GuardiansOfTheater&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" target="_blank" rel="noopener" href="https://news.ycombinator.com/submitlink?u=https://yejincode.github.io/2023/11/01/Hackerthon-GuardiansOfTheater/&t=Hackerthon: GuardiansOfTheater"><i class="fab fa-hacker-news fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fa-solid fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        
+          <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fa-solid fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fa-solid fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fa-solid fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy;
+    
+    
+    2016-2023
+    yejin song
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+        <!--
+       --><li><a href="/">Home</a></li><!--
+     --><!--
+       --><li><a href="/about/">About</a></li><!--
+     --><!--
+       --><li><a href="/archives/">Writing</a></li><!--
+     --><!--
+       --><li><a target="_blank" rel="noopener" href="http://github.com/yejincode">Projects</a></li><!--
+     -->
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+
+
+
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" crossorigin="anonymous" onload="this.onload=null;this.rel='stylesheet'"/>
+
+
+    <!-- jquery -->
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
+
+
+
+
+<!-- clipboard -->
+
+  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.7/clipboard.min.js" crossorigin="anonymous"></script>
+  
+  <script type="text/javascript">
+  $(function() {
+    // copy-btn HTML
+    var btn = "<span class=\"btn-copy tooltipped tooltipped-sw\" aria-label=\"Copy to clipboard!\">";
+    btn += '<i class="fa-regular fa-clone"></i>';
+    btn += '</span>';
+    // mount it!
+    $(".highlight table").before(btn);
+    var clip = new ClipboardJS('.btn-copy', {
+      text: function(trigger) {
+        return Array.from(trigger.nextElementSibling.querySelectorAll('.code')).reduce((str,it)=>str+it.innerText+'\n','')
+      }
+    });
+    clip.on('success', function(e) {
+      e.trigger.setAttribute('aria-label', "Copied!");
+      e.clearSelection();
+    })
+  })
+  </script>
+
+
+<script src="/js/main.js"></script>
+
+<!-- search -->
+
+<!-- Baidu Analytics -->
+
+<!-- Cloudflare Analytics -->
+
+<!-- Disqus Comments -->
+
+<!-- utterances Comments -->
+
+</body>
+</html>
